@@ -1,7 +1,7 @@
 propiedades = { nombre: 'Beethoven', raza: 'San Bernardo', color: 'Café' }
 
 class Dog
-  attr_accessor :hash
+  attr_reader :hash
   def inizialize
     @hash = hash
   end
