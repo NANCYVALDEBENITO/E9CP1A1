@@ -1,17 +1,32 @@
+
 class Product
-  def initialize(name, large, medium, small, xsmall)
-    @name = name
-    @large = large
-    @medium = medium
-    @small = small
-    @xsmall = xsmall
+  attr_accessor :name
+
+  def initialize(*data)
+    @name = data[0]
+    @large = data[1].to_i
+    @medium = data[2].to_i
+    @small = data[3].to_i
+    @xsmall = data[4].to_i
   end
+  def average
+    (@large + @medium + @small + @xsmall)/4
+  end
+ 
+
 end
 products_list = []
 data = []
-File.open('catalogo.txt', 'r') { |file| data = file.readlines }
+File.open('catalogo.txt', 'r') { |file| data = file.readlines}
 data.each do |prod|
   ls = prod.split(', ')
-  products_list << Product.new(ls[0], ls[1], ls[2], ls[3], ls[4])
+  products_list << Product.new(*ls)
 end
-puts products_list
+# products_list.each do |object|
+#   print object.inspect
+# end
+print products_list
+
+products_list.each do |product|
+  puts "EL precio promedio del producto #{product.name} es #{product.average}"
+end

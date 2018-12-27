@@ -34,3 +34,8 @@ class Morseable
 end
 m = Morseable.new(3)
 print m.to_morse
+
+(0..9).each do |number|
+  puts '.' * 5 * number
+  puts '-' * 5 - number
+end
